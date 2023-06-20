@@ -176,6 +176,20 @@ export default function App() {
             >
               Download
             </button>
+            <button
+              style={styles.controlButton}
+              onClick={() => {
+                if (selectedFile) {
+                  const newFiles = myFiles.filter(
+                    (file) => file.id !== selectedFile.id
+                  );
+                  setMyFiles(newFiles);
+                  setSelectedFile(null);
+                }
+              }}
+            >
+              Delete
+            </button>
           </div>
           <div style={styles.fileContainer}>
             <div style={{ width: "100%", padding: 10 }}>
