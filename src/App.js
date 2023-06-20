@@ -220,6 +220,7 @@ export default function App() {
                     </div>
                   );
                 }
+                return null; // Add a default return statement
               })}
             </div>
             {selectedFile && (
