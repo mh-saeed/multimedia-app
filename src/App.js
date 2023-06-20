@@ -381,7 +381,8 @@ const styles = {
     background: "#f5f5f5",
   },
   sharecloseButton: {
-    background: "#f5f5f5",
+    background: "red",
+    color: "#fff",
     border: "none",
     padding: "8px 12px",
     borderRadius: "4px",
