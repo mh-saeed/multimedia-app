@@ -31,7 +31,7 @@ const ShareButton = ({ selectedFile }) => {
 
   const shareFile = (platform) => {
     // Share the file on the selected platform
-    const shareUrl = `https://mh-saeed-multimedia-app.netlify.app/files/${selectedFile.id}`;
+    const shareUrl = `https://mh-saeed-multimedia-app.netlify.app${selectedFile.path}`;
     const shareText = `Check out this file: ${selectedFile.name}`;
     const encodedShareUrl = encodeURIComponent(shareUrl);
     const encodedShareText = encodeURIComponent(shareText);
