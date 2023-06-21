@@ -34,6 +34,7 @@ ChartJS.register(
 export default function App() {
   const [myFiles, setMyFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [filePath, setFilePath] = useState("/file-server/");
   const [showChartModal, setShowChartModal] = useState(false);
 
@@ -111,18 +112,14 @@ export default function App() {
             </button>
             <button
               style={styles.controlButton}
-              onClick={() => {
-                setShowChartModal(true);
-              }}
+              onClick={() => setShowChartModal(true)}
             >
               Files Breakdown
             </button>
             <button
               style={styles.controlButton}
               onClick={() => {
-                if (selectedFile) {
-                  window.open(selectedFile.path, "_blank");
-                }
+                if (selectedFile) window.open(selectedFile.path, "_blank");
               }}
             >
               Download
