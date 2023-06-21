@@ -1,13 +1,9 @@
 import React, { useState } from "react";
+import { styles } from "./styled";
 
-export const ShareButton = ({
-  styles,
-  selectedFile,
-  myFiles,
-  setMyFiles,
-  setSelectedFile,
-}) => {
+const ShareButton = ({ selectedFile }) => {
   const [showModal, setShowModal] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [selectedPlatform, setSelectedPlatform] = useState("");
   const [error, setError] = useState("");
 
@@ -30,14 +26,6 @@ export const ShareButton = ({
       setSelectedPlatform(platform);
       shareFile(platform);
       setShowModal(false);
-    }
-  };
-
-  const handleDeleteFile = () => {
-    if (selectedFile) {
-      const newFiles = myFiles.filter((file) => file.id !== selectedFile.id);
-      setMyFiles(newFiles);
-      setSelectedFile(null);
     }
   };
 
@@ -110,3 +98,5 @@ export const ShareButton = ({
     </div>
   );
 };
+
+export default ShareButton;
