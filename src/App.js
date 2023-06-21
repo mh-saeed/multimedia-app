@@ -34,13 +34,31 @@ ChartJS.register(
 export default function App() {
   const [myFiles, setMyFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
-  // eslint-disable-next-line no-unused-vars
   const [filePath, setFilePath] = useState("/file-server/");
   const [showChartModal, setShowChartModal] = useState(false);
 
   useEffect(() => {
-    setMyFiles(data);
+    const storedFiles = JSON.parse(localStorage.getItem("myFiles"));
+
+    if (!storedFiles || storedFiles.length === 0) {
+      setMyFiles(data);
+      localStorage.setItem("myFiles", JSON.stringify(data));
+    }
+
+    if (storedFiles && storedFiles.length > 0) {
+      setMyFiles(storedFiles);
+    }
   }, []);
+
+  useEffect(() => {
+    const storedFiles = JSON.parse(localStorage.getItem("myFiles"));
+
+    if (myFiles.length > 0 || storedFiles.length === 1) {
+      localStorage.setItem("myFiles", JSON.stringify(myFiles));
+    }
+  }, [myFiles]);
+
+  console.log(myFiles);
 
   var barChartOptions = {
     responsive: true,
@@ -86,7 +104,6 @@ export default function App() {
                     return file;
                   });
                   setMyFiles(newFiles);
-                  setSelectedFile(null);
                 }
               }}
             >
@@ -118,7 +135,6 @@ export default function App() {
                     (file) => file.id !== selectedFile.id
                   );
                   setMyFiles(newFiles);
-                  setSelectedFile(null);
                 }
               }}
             >
@@ -152,7 +168,7 @@ export default function App() {
                     </div>
                   );
                 }
-                return null; // Add a default return statement
+                return null;
               })}
             </div>
             {selectedFile && (

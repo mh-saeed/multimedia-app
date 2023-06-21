@@ -35,7 +35,7 @@ export const styles = {
     borderRadius: "4px",
     background: "#f5f5f5",
   },
-  sharecloseButton: {
+  shareCloseButton: {
     background: "red",
     color: "#fff",
     border: "none",

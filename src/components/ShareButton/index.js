@@ -66,6 +66,20 @@ const ShareButton = ({ selectedFile }) => {
     }
   };
 
+  const handleCopyToClipboard = () => {
+    const shareUrl = `https://mh-saeed-multimedia-app.netlify.app${selectedFile.path}`;
+    const copyText = `${shareUrl}`;
+
+    navigator.clipboard
+      .writeText(copyText)
+      .then(() => {
+        alert("File link copied to clipboard!");
+      })
+      .catch((error) => {
+        console.error("Failed to copy file information to clipboard:", error);
+      });
+  };
+
   const shareOptions = ["Facebook", "Twitter", "LinkedIn"];
 
   return (
@@ -79,6 +93,9 @@ const ShareButton = ({ selectedFile }) => {
             <h3>Select a platform to share:</h3>
             {error && <p style={styles.error}>{error}</p>}
             <ul style={styles.shareOptionsList}>
+              <li style={styles.shareOption} onClick={handleCopyToClipboard}>
+                Copy Link
+              </li>
               {shareOptions.map((platform) => (
                 <li
                   key={platform}
@@ -89,7 +106,7 @@ const ShareButton = ({ selectedFile }) => {
                 </li>
               ))}
             </ul>
-            <button style={styles.sharecloseButton} onClick={handleCloseModal}>
+            <button style={styles.shareCloseButton} onClick={handleCloseModal}>
               Close
             </button>
           </div>
