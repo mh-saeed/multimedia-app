@@ -19,31 +19,50 @@ export const styles = {
   },
   addMediaModal: {
     background: "#fff",
-    padding: "20px",
+    padding: "30px",
     borderRadius: "4px",
-    maxWidth: "400px",
+    maxWidth: "500px",
+    width: "100%",
+    boxSizing: "border-box",
   },
-  addMediaCloseButton: {
-    background: "red",
-    color: "#fff",
+
+  formField: {
+    marginBottom: "20px",
+  },
+
+  label: {
+    display: "block",
+    marginBottom: "10px",
+    fontWeight: "bold",
+  },
+
+  input: {
+    padding: "10px",
+    border: "1px solid #ccc",
+    borderRadius: "4px",
+    width: "100%",
+    boxSizing: "border-box",
+  },
+
+  select: {
+    padding: "10px",
+    border: "1px solid #ccc",
+    borderRadius: "4px",
+    width: "100%",
+    boxSizing: "border-box",
+  },
+
+  formActions: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginTop: "20px",
+  },
+
+  formButton: {
+    padding: "10px 20px",
     border: "none",
-    padding: "8px 12px",
     borderRadius: "4px",
+    marginRight: "10px",
     cursor: "pointer",
-    margin: "8px",
-    marginLeft: "0px",
-  },
-  addMediaButton: {
-    background: "#4BB543",
-    color: "#fff",
-    border: "none",
-    padding: "8px 12px",
-    borderRadius: "4px",
-    cursor: "pointer",
-    margin: "8px",
-  },
-  error: {
-    color: "red",
-    marginTop: "10px",
   },
 };

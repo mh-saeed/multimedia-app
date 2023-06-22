@@ -45,27 +45,41 @@ const AddMedia = ({ myFiles, setMyFiles }) => {
         <div style={styles.modalOverlay}>
           <div style={styles.addMediaModal}>
             <form>
-              <div>
-                <label>Name:</label>
+              <div style={styles.formField}>
+                <label htmlFor="mediaName" style={styles.label}>
+                  Name:
+                </label>
                 <input
                   type="text"
+                  id="mediaName"
                   value={mediaName}
                   onChange={(e) => setMediaName(e.target.value)}
+                  style={styles.input}
+                  placeholder="Enter the media name"
                 />
               </div>
-              <div>
-                <label>Path:</label>
+              <div style={styles.formField}>
+                <label htmlFor="mediaPath" style={styles.label}>
+                  Path:
+                </label>
                 <input
                   type="text"
+                  id="mediaPath"
                   value={mediaPath}
                   onChange={(e) => setMediaPath(e.target.value)}
+                  style={styles.input}
+                  placeholder="Enter the media path"
                 />
               </div>
-              <div>
-                <label>Type:</label>
+              <div style={styles.formField}>
+                <label htmlFor="mediaType" style={styles.label}>
+                  Type:
+                </label>
                 <select
+                  id="mediaType"
                   value={mediaType}
                   onChange={(e) => setMediaType(e.target.value)}
+                  style={styles.select}
                 >
                   <option value="image">Image</option>
                   <option value="document">Document</option>
@@ -74,17 +88,17 @@ const AddMedia = ({ myFiles, setMyFiles }) => {
                 </select>
               </div>
               {error && <p style={styles.error}>{error}</p>}
-              <div>
+              <div style={styles.formActions}>
                 <button
+                  style={styles.formButton}
                   type="button"
-                  style={styles.addMediaCloseButton}
                   onClick={() => setShowModal(false)}
                 >
                   Cancel
                 </button>
                 <button
+                  style={styles.formButton}
                   type="button"
-                  style={styles.addMediaButton}
                   onClick={handleAddMedia}
                 >
                   Save
