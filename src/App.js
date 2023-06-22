@@ -40,6 +40,7 @@ ChartJS.register(
 export default function App() {
   const [myFiles, setMyFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [filePath, setFilePath] = useState("/file-server/");
   const [showChartModal, setShowChartModal] = useState(false);
 
