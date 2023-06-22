@@ -14,9 +14,13 @@ import {
 import {
   AudioPlayer,
   ChartModal,
+  Delete,
   DocumentViewer,
+  Download,
+  FilesBreakdown,
   Header,
   ImageViewer,
+  Rename,
   ShareButton,
   VideoPlayer,
 } from "./components";
@@ -59,8 +63,6 @@ export default function App() {
     }
   }, [myFiles]);
 
-  console.log(myFiles);
-
   var barChartOptions = {
     responsive: true,
     plugins: {
@@ -91,52 +93,23 @@ export default function App() {
             <p>{selectedFile ? selectedFile.path : filePath}</p>
           </div>
           <div style={styles.controlTools}>
-            <button
-              style={styles.controlButton}
-              onClick={() => {
-                if (selectedFile) {
-                  const newFiles = myFiles.map((file) => {
-                    if (file.id === selectedFile.id) {
-                      return {
-                        ...file,
-                        name: prompt("Enter new name"),
-                      };
-                    }
-                    return file;
-                  });
-                  setMyFiles(newFiles);
-                }
-              }}
-            >
-              Rename
-            </button>
-            <button
-              style={styles.controlButton}
-              onClick={() => setShowChartModal(true)}
-            >
-              Files Breakdown
-            </button>
-            <button
-              style={styles.controlButton}
-              onClick={() => {
-                if (selectedFile) window.open(selectedFile.path, "_blank");
-              }}
-            >
-              Download
-            </button>
-            <button
-              style={styles.controlButton}
-              onClick={() => {
-                if (selectedFile) {
-                  const newFiles = myFiles.filter(
-                    (file) => file.id !== selectedFile.id
-                  );
-                  setMyFiles(newFiles);
-                }
-              }}
-            >
-              Delete
-            </button>
+            <Rename
+              styles={styles}
+              selectedFile={selectedFile}
+              myFiles={myFiles}
+              setMyFiles={setMyFiles}
+            />
+            <FilesBreakdown
+              styles={styles}
+              setShowChartModal={setShowChartModal}
+            />
+            <Download styles={styles} selectedFile={selectedFile} />
+            <Delete
+              styles={styles}
+              selectedFile={selectedFile}
+              myFiles={myFiles}
+              setMyFiles={setMyFiles}
+            />
             <ShareButton
               selectedFile={selectedFile}
               myFiles={myFiles}
