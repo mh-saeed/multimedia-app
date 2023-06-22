@@ -31,7 +31,10 @@ const ShareButton = ({ selectedFile }) => {
 
   const shareFile = (platform) => {
     // Share the file on the selected platform
-    const shareUrl = `https://mh-saeed-multimedia-app.netlify.app${selectedFile.path}`;
+    const shareUrl = selectedFile.path.startsWith("https://")
+      ? selectedFile.path
+      : `https://mh-saeed-multimedia-app.netlify.app${selectedFile.path}`;
+
     const shareText = `Check out this file: ${selectedFile.name}`;
     const encodedShareUrl = encodeURIComponent(shareUrl);
     const encodedShareText = encodeURIComponent(shareText);
@@ -67,7 +70,10 @@ const ShareButton = ({ selectedFile }) => {
   };
 
   const handleCopyToClipboard = () => {
-    const shareUrl = `https://mh-saeed-multimedia-app.netlify.app${selectedFile.path}`;
+    const shareUrl = selectedFile.path.startsWith("https://")
+      ? selectedFile.path
+      : `https://mh-saeed-multimedia-app.netlify.app${selectedFile.path}`;
+
     const copyText = `${shareUrl}`;
 
     navigator.clipboard
