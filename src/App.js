@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { data } from "./data";
-
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +10,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 import {
+  AddMedia,
   AudioPlayer,
   ChartModal,
   Delete,
@@ -21,10 +22,11 @@ import {
   Header,
   ImageViewer,
   Rename,
-  ShareButton,
+  Share,
   VideoPlayer,
 } from "./components";
 import { styles } from "./styled";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -38,7 +40,6 @@ ChartJS.register(
 export default function App() {
   const [myFiles, setMyFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
-  // eslint-disable-next-line no-unused-vars
   const [filePath, setFilePath] = useState("/file-server/");
   const [showChartModal, setShowChartModal] = useState(false);
 
@@ -46,19 +47,16 @@ export default function App() {
     const storedFiles = JSON.parse(localStorage.getItem("myFiles"));
 
     if (!storedFiles || storedFiles.length === 0) {
-      setMyFiles(data);
       localStorage.setItem("myFiles", JSON.stringify(data));
+      setMyFiles(data);
     }
-
-    if (storedFiles && storedFiles.length > 0) {
+    if (storedFiles.length > 0) {
       setMyFiles(storedFiles);
     }
   }, []);
 
   useEffect(() => {
-    const storedFiles = JSON.parse(localStorage.getItem("myFiles"));
-
-    if (myFiles.length > 0 || storedFiles.length === 1) {
+    if (myFiles.length > 0) {
       localStorage.setItem("myFiles", JSON.stringify(myFiles));
     }
   }, [myFiles]);
@@ -90,7 +88,9 @@ export default function App() {
         <div style={styles.container}>
           <div style={{ padding: 10, paddingBottom: 0 }}>
             <p style={{ fontWeight: "bold" }}>My Files</p>
-            <p>{selectedFile ? selectedFile.path : filePath}</p>
+            <p style={{ wordWrap: "break-word" }}>
+              {selectedFile ? selectedFile.path : filePath}
+            </p>
           </div>
           <div style={styles.controlTools}>
             <Rename
@@ -107,38 +107,41 @@ export default function App() {
             <Delete
               styles={styles}
               selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
               myFiles={myFiles}
               setMyFiles={setMyFiles}
             />
-            <ShareButton
+            <Share
               selectedFile={selectedFile}
               myFiles={myFiles}
               setMyFiles={setMyFiles}
               setSelectedFile={setSelectedFile}
             />
+            <AddMedia
+              styles={styles}
+              myFiles={myFiles}
+              setMyFiles={setMyFiles}
+            />
           </div>
           <div style={styles.fileContainer}>
             <div style={{ width: "100%", padding: 10 }}>
               {myFiles.map((file) => {
-                if (file.path.slice(0, filePath.length) === filePath) {
-                  return (
-                    <div
-                      style={styles.file}
-                      className="files"
-                      key={file.id}
-                      onClick={() => {
-                        if (selectedFile && selectedFile.id === file.id) {
-                          setSelectedFile(null);
-                          return;
-                        }
-                        setSelectedFile(file);
-                      }}
-                    >
-                      <p>{file.name}</p>
-                    </div>
-                  );
-                }
-                return null;
+                return (
+                  <div
+                    style={styles.file}
+                    className="files"
+                    key={file.id}
+                    onClick={() => {
+                      if (selectedFile && selectedFile.id === file.id) {
+                        setSelectedFile(null);
+                        return;
+                      }
+                      setSelectedFile(file);
+                    }}
+                  >
+                    <p>{file.name}</p>
+                  </div>
+                );
               })}
             </div>
             {selectedFile && (
@@ -160,7 +163,7 @@ export default function App() {
                 </p>
                 <p>
                   path:{" "}
-                  <span style={{ fontStyle: "italic" }}>
+                  <span style={{ fontStyle: "italic", wordWrap: "break-word" }}>
                     {selectedFile.path}
                   </span>
                 </p>

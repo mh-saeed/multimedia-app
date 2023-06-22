@@ -4,6 +4,6 @@ export const styles = {
   },
   iframe: {
     width: "100%",
-    height: "300px",
+    height: "45vh",
   },
 };

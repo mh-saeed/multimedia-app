@@ -1,4 +1,10 @@
-const Delete = ({ styles, selectedFile, myFiles, setMyFiles }) => {
+const Delete = ({
+  styles,
+  selectedFile,
+  myFiles,
+  setMyFiles,
+  setSelectedFile,
+}) => {
   return (
     <button
       style={styles.controlButton}
@@ -8,6 +14,8 @@ const Delete = ({ styles, selectedFile, myFiles, setMyFiles }) => {
             (file) => file.id !== selectedFile.id
           );
           setMyFiles(newFiles);
+          setSelectedFile(null);
+          localStorage.setItem("myFiles", JSON.stringify(newFiles));
         }
       }}
     >
