@@ -3,8 +3,6 @@ import { styles } from "./styled";
 
 const ShareButton = ({ selectedFile }) => {
   const [showModal, setShowModal] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [selectedPlatform, setSelectedPlatform] = useState("");
   const [error, setError] = useState("");
 
   const handleShareButtonClick = () => {
@@ -12,7 +10,6 @@ const ShareButton = ({ selectedFile }) => {
       setShowModal(true);
       setError("");
     } else {
-      // Show tooltip or error message indicating that no item is selected
       setError("Please select an item to share.");
     }
   };
@@ -23,14 +20,12 @@ const ShareButton = ({ selectedFile }) => {
 
   const handleShareOptionClick = (platform) => {
     if (selectedFile) {
-      setSelectedPlatform(platform);
       shareFile(platform);
       setShowModal(false);
     }
   };
 
   const shareFile = (platform) => {
-    // Share the file on the selected platform
     const shareUrl = selectedFile.path.startsWith("https://")
       ? selectedFile.path
       : `https://mh-saeed-multimedia-app.netlify.app${selectedFile.path}`;
@@ -96,7 +91,7 @@ const ShareButton = ({ selectedFile }) => {
       {showModal && (
         <div style={styles.modalOverlay}>
           <div style={styles.shareModal}>
-            <h3>Select a platform to share:</h3>
+            <h3 style={styles.shareTitle}>Select a platform to share:</h3>
             {error && <p style={styles.error}>{error}</p>}
             <ul style={styles.shareOptionsList}>
               <li style={styles.shareOption} onClick={handleCopyToClipboard}>
@@ -112,9 +107,14 @@ const ShareButton = ({ selectedFile }) => {
                 </li>
               ))}
             </ul>
-            <button style={styles.shareCloseButton} onClick={handleCloseModal}>
-              Close
-            </button>
+            <div style={styles.closeButtonDiv}>
+              <button
+                style={styles.shareCloseButton}
+                onClick={handleCloseModal}
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

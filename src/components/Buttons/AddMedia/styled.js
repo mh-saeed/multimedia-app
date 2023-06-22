@@ -24,6 +24,7 @@ export const styles = {
     maxWidth: "500px",
     width: "100%",
     boxSizing: "border-box",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
   },
 
   formField: {
@@ -58,11 +59,31 @@ export const styles = {
     marginTop: "20px",
   },
 
-  formButton: {
+  saveButton: {
     padding: "10px 20px",
     border: "none",
     borderRadius: "4px",
     marginRight: "10px",
     cursor: "pointer",
+    background: "#4caf50",
+    color: "#fff",
+    fontWeight: "bold",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+  },
+
+  closeButton: {
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: "4px",
+    marginRight: "10px",
+    cursor: "pointer",
+    background: "#ff4d4f",
+    color: "#fff",
+    fontWeight: "bold",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+  },
+  error: {
+    color: "red",
+    marginTop: "10px",
   },
 };

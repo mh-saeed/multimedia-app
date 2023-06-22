@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styles } from "./styled";
 
 const AddMedia = ({ myFiles, setMyFiles }) => {
@@ -7,6 +7,18 @@ const AddMedia = ({ myFiles, setMyFiles }) => {
   const [mediaPath, setMediaPath] = useState("");
   const [mediaType, setMediaType] = useState("image");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    let timer;
+    if (error) {
+      timer = setTimeout(() => {
+        setError("");
+      }, 3000); // Change the delay value (in milliseconds) as per your requirement
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [error]);
 
   const handleAddMedia = () => {
     if (!mediaName || !mediaPath) {
@@ -87,17 +99,19 @@ const AddMedia = ({ myFiles, setMyFiles }) => {
                   <option value="video">Video</option>
                 </select>
               </div>
+
               {error && <p style={styles.error}>{error}</p>}
+
               <div style={styles.formActions}>
                 <button
-                  style={styles.formButton}
+                  style={styles.closeButton}
                   type="button"
                   onClick={() => setShowModal(false)}
                 >
                   Cancel
                 </button>
                 <button
-                  style={styles.formButton}
+                  style={styles.saveButton}
                   type="button"
                   onClick={handleAddMedia}
                 >
