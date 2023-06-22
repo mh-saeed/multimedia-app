@@ -44,6 +44,8 @@ export default function App() {
   const [filePath, setFilePath] = useState("/file-server/");
   const [showChartModal, setShowChartModal] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     const storedFiles = JSON.parse(localStorage.getItem("myFiles"));
 
@@ -73,6 +75,14 @@ export default function App() {
         text: "Files Breakdown",
       },
     },
+  };
+
+  const filteredFiles = myFiles.filter((file) =>
+    file.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -123,10 +133,17 @@ export default function App() {
               myFiles={myFiles}
               setMyFiles={setMyFiles}
             />
+            <input
+              type="text"
+              placeholder="Search files..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+              style={styles.input}
+            />
           </div>
           <div style={styles.fileContainer}>
             <div style={{ width: "100%", padding: 10 }}>
-              {myFiles.map((file) => {
+              {filteredFiles.map((file) => {
                 return (
                   <div
                     style={styles.file}

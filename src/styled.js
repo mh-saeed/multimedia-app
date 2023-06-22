@@ -38,4 +38,10 @@ export const styles = {
     cursor: "pointer",
     fontWeight: "bold",
   },
+  input: {
+    padding: "10px",
+    border: "1px solid #ccc",
+    borderRadius: "4px",
+    boxSizing: "border-box",
+  },
 };
