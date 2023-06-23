@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Multimedia Web App Additional Features
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table of Contents
 
-## Available Scripts
+- [Multimedia Web App Additional Features](#multimedia-web-app-additional-features)
+  - [Share Media](#share-media)
+  - [Add Media](#add-media)
+  - [Search Media](#search-media)
 
-In the project directory, you can run:
+## Share Media
 
-### `npm start`
+- **Description:** The "Share Media" feature allows users to share selected files through different platforms such as Facebook, Twitter, and LinkedIn.
+- **How it works:** When the user clicks the "Share" button, a modal overlay is displayed with options to select a platform for sharing. The user can choose a platform, and the app generates the share link based on the selected file's path. The link is then opened in a new window, allowing the user to share the file on the chosen platform. Additionally, there is an option to copy the file link to the clipboard.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Add Media
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Description:** The "Add Media" feature enables users to add new media files to their collection by providing the name, path, and type of the media.
+- **How it works:** When the user clicks the "Add Media" button, a modal overlay appears with input fields for the name, path, and type of the media file. The user enters the necessary information and clicks the "Save" button to add the media file to the collection. If any required fields are missing, an error message is displayed. The added media is then stored in the app's state and can be viewed and accessed by the user.
 
-### `npm test`
+## Search Media
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Description:** The "Search Media" feature allows users to search for specific files within their collection based on file names.
+- **How it works:** The search functionality is implemented using an input field where the user can enter keywords related to the file they are looking for. As the user types in the search field, the app filters the files in real-time based on the file names that match the search term. The filtered files are displayed, allowing the user to easily find and access the desired files.
 
-### `npm run build`
+These additional features enhance the functionality and usability of your Multimedia Web App in the following ways:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Share Media:** This feature enables users to share files with others through popular social media platforms, increasing the app's reach and allowing users to collaborate and distribute their media content more effectively.
+- **Add Media:** Users can easily add new media files to their collection without manually modifying the code. This feature provides flexibility and allows users to expand their multimedia library as needed.
+- **Search Media:** With a growing collection of media files, searching becomes essential for efficient file management. The search feature helps users quickly locate specific files by searching through the file names, making it easier to find and access the desired media content.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Overall, these features provide valuable functionalities that align with the core purpose of a Multimedia Web App, enabling users to interact with and manage their media files more effectively.
