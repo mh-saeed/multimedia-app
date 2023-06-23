@@ -94,9 +94,9 @@ const AddMedia = ({ myFiles, setMyFiles }) => {
                   style={styles.select}
                 >
                   <option value="image">Image</option>
-                  <option value="document">Document</option>
-                  <option value="audio">Audio</option>
-                  <option value="video">Video</option>
+                  <option value="document">Document (pdf only)</option>
+                  <option value="audio">Audio (mp3 only)</option>
+                  <option value="video">Video (youtube only)</option>
                 </select>
               </div>
 
