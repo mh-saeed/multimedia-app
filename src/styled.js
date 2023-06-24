@@ -43,5 +43,6 @@ export const styles = {
     border: "1px solid #ccc",
     borderRadius: "4px",
     boxSizing: "border-box",
+    maxWidth: "-webkit-fill-available",
   },
 };
