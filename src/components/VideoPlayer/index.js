@@ -1,4 +1,5 @@
 import React from "react";
+import { styles } from "./styled";
 
 const VideoPlayer = ({ path }) => {
   const isYouTubeUrl = path.includes("youtube.com");
@@ -8,7 +9,7 @@ const VideoPlayer = ({ path }) => {
     const embedUrl = `https://www.youtube.com/embed/${videoId}`;
 
     return (
-      <div>
+      <div style={styles.div}>
         <iframe
           width="100%"
           height="400"
@@ -22,7 +23,7 @@ const VideoPlayer = ({ path }) => {
 
   return (
     <div>
-      <video controls>
+      <video controls style={styles.video}>
         <source src={path} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
